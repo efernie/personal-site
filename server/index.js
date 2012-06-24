@@ -20,6 +20,7 @@ app.use(express.bodyParser())
 ;
 
 app.use(express.static(__dirname + '/../client'));
+
 app.use(app.router);
 
 require('./lib')(app);
