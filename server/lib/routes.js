@@ -20,12 +20,15 @@ module.exports = function (app) {
     res.render('index');
   });
 
+  app.get('/webgl/:page', function (req, res) {
+    res.render('webgl/' + req.params.page);
+  });
 
   // All other pages
   app.get('/:page',function(req,res) {
 
     // View Partial
-    res.partial(req.params.page);
+    res.render(req.params.page);
   });
 
 }

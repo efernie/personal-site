@@ -1,6 +1,7 @@
 @import "bootstrap/bootstrap.less";
 
 @import url("http://fonts.googleapis.com/css?family=Press+Start+2P|Oxygen");
+@import url(http://fonts.googleapis.com/css?family=Arvo);
 
 body {
   font-family: 'Oxygen', sans-serif;
@@ -26,6 +27,7 @@ body:before {
 @darkGreen: rgb(3,105,58);
 @green: rgb(8,158,90);
 @lightGreen: rgb(141,171,85);
+@blue: rgb(0, 136, 204);
 @white: rgb(236,234,213);
 
 /* ===== Primary Styles ========================================================
@@ -39,11 +41,29 @@ header{
   margin: 10px;
   h1{
     color: @darkGreen;
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Arvo', cursive;
+    font-size: 140px;
+    line-height: 170px;
+    text-shadow:
+    -2px -2px 1px @lightGreen,
+    -1px -1px 1px @lightGreen,
+    1px 1px 1px rgba(232,247,255,0.9),
+    1px 1px 0 #2a658b,
+    2px 2px 0 #29638a,
+    3px 3px 0 #286188,
+    4px 4px 0 #275f85,
+    5px 5px 0 #265d83,
+    6px 6px 0 #255a80,
+    7px 7px 0 #24577d,
+    8px 8px 0 #235479,
+    9px 9px 0 #215075,
+    10px 10px 0 #1f4c71,
+    11px 11px 0 #1e486c,
+    12px 12px 1px rgba(28,67,103,0.5),
+    14px 14px 12px rgba(5,13,20,0.5)
+    ;
   }
 }
-
-
 
 
 
