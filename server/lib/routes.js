@@ -1,13 +1,5 @@
-var ENV = process.env['NODE_ENV'] || 'development'
-  , config = require('../config')[ENV]
-  , _ = require('underscore')
-  ;
-
-  var sampleData = {
-    email : 'test@test.com',
-    firstName : 'fern',
-    lastName : 'fernberg'
-  };
+var ENV = process.env['NODE_ENV'] || 'development',
+    config = require('../config')[ENV];
 
 module.exports = function (app) {
 
@@ -20,15 +12,9 @@ module.exports = function (app) {
     res.render('index');
   });
 
-  app.get('/webgl/:page', function (req, res) {
-    res.render('webgl/' + req.params.page);
-  });
-
   // All other pages
   app.get('/:page',function(req,res) {
-
-    // View Partial
-    res.render(req.params.page);
+    res.render('index');
   });
 
 }

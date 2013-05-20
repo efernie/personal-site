@@ -1,11 +1,25 @@
 {
-  "name": "Ember_Node_Tests",
-  "description": "Working with Ember and Node and Jade",
+  "name": "my_personal_site",
+  "version": "0.1.0",
+  "description": "My presonal website",
+  "author": "efernie",
   "version": "0.0.1",
   "dependencies": {
-    "express": "2.x",
-    "underscore": "1.x",
-    "jade": "0.20.x",
-    "connect-gzip": "x"
+    "express": "3.x.x",
+    "lodash": "1.x.x",
+    "jade": "0.28.x",
+    "q": "0.9.x",
+    "socket.io": "~0.9.14",
+    "consolidate": "0.9.x"
+  },
+  "devDependencies": {
+    "chai": "~1.5.0",
+    "mocha": "1.9.x"
+  },
+  "engines": {
+    "node": ">=0.10"
+  },
+  "scripts": {
+    "start": "sudo node index.js"
   }
 }
