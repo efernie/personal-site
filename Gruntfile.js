@@ -52,7 +52,8 @@ module.exports = function (grunt) {
         options: {
           style: 'nested',
           lineNumbers: false,
-          debugInfo: false
+          debugInfo: false,
+          loadAll: 'client/styles/sass/extensions'
         },
         files: {
           'client/styles/css/main.css': 'client/styles/sass/main.scss'
