@@ -1,0 +1,10 @@
+{
+  "name": "ferns-personal-site",
+  "description": "fern's site built using koa",
+  "version": "0.0.1",
+  "dependencies": {
+    "lodash": "^2.4.1",
+    "koa": "^0.5.5",
+    "jade": "^1.3.1"
+  }
+}
