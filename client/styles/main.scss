@@ -1,7 +1,16 @@
 @import "libs/pure-min";
 @import "variables";
+@import "../fonts/fonts";
 
 html, body {
   background: $black;
   color: $white;
+}
+
+a {
+  color: $white;
+  display: block;
+  font-size: $fontSize;
+  font-size: $fontSizeR;
+  text-decoration: none;
 }

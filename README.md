@@ -9,6 +9,7 @@ My personal site built using the koa framework as an experiment.
 
   - ##### Client
     - [browserify](https://github.com/substack/node-browserify)
+    - [monosocialiconsfont](http://drinchev.github.io/monosocialiconsfont/)
 
 ----
 ##### Running in Development
