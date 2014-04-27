@@ -2,7 +2,12 @@ var koa = require('koa'),
     views = require('co-views'),
     path = require('path'),
     app = koa(),
-    render = views(path.resolve(__dirname,  '../', 'client/views'), { ext: 'jade' });
+    render = views(path.resolve(__dirname,  '../', 'client/views'), { ext: 'jade' }),
+    port = 3000;
+
+if ( app.env === 'production' ) {
+  port = 80;
+}
 
 app.use( function *( next ) {
   var start = new Date;
@@ -16,5 +21,5 @@ app.use( function *() {
   this.body = yield render('index');
 });
 
-app.listen(3000);
-console.log('App listening on port 3000, env:', app.env);
+app.listen(port);
+console.log('App listening on port ' + port + ', env:', app.env);
