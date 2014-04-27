@@ -911,6 +911,9 @@ html, body {
   background: black;
   color: white; }
 
+h1 {
+  font-weight: 100; }
+
 a {
   color: white;
   display: block;

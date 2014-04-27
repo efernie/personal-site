@@ -1,6 +1,7 @@
 var koa = require('koa'),
     views = require('co-views'),
     common = require('koa-common'),
+    responseTime = common.responseTime,
     serve = common.static,
     compress = common.compress,
     path = require('path'),
@@ -9,17 +10,18 @@ var koa = require('koa'),
     config = require('./config')[app.env],
     render = views(path.resolve(__dirname,  '../', 'client/views'), { ext: 'jade' });
 
+// app.use(responseTime());
 app.use( compress() );
 app.use( serve( path.resolve(__dirname,  '../', 'client/') ) );
+
+// app.use( function *( next ) {
+//   var start = new Date;
+//   yield next;
+//   var ms = new Date - start;
+//   console.log('%s %s - %s', this.method, this.url, ms);
+// });
+
 app.use( router(app) );
-
-app.use( function *( next ) {
-  var start = new Date;
-  yield next;
-  var ms = new Date - start;
-  console.log('%s %s - %s', this.method, this.url, ms);
-
-});
 
 app.get('/', function *(next) {
   this.locals = {
