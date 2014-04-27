@@ -16,10 +16,10 @@ app.use( function *( next ) {
   console.log('%s %s - %s', this.method, this.url, ms);
 });
 
-// response
 app.use( function *() {
   this.body = yield render('index');
 });
 
 app.listen(port);
+
 console.log('App listening on port ' + port + ', env:', app.env);
