@@ -3,12 +3,8 @@ var koa = require('koa'),
     path = require('path'),
     router = require('koa-router'),
     app = koa(),
-    render = views(path.resolve(__dirname,  '../', 'client/views'), { ext: 'jade' }),
-    port = 3000;
-
-if ( app.env === 'production' ) {
-  port = 80;
-}
+    config = require('./config')[app.env],
+    render = views(path.resolve(__dirname,  '../', 'client/views'), { ext: 'jade' });
 
 app.use(router(app));
 
@@ -23,6 +19,6 @@ app.get('/', function *(next) {
   this.body = yield render('index');
 });
 
-app.listen(port);
+app.listen(config.port);
 
-console.log('App listening on port ' + port + ', env:', app.env);
+console.log('App listening on port ' + config.port + ', env:', app.env);
