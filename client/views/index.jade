@@ -22,13 +22,14 @@ html
   body
     h1 eric 'fernie' fernberg
 
-    a(href='https://github.com/efernie',title='github', target="_blank").symbol
-    a(href='https://twitter.com/EFernie',title='twitterbird', target="_blank").symbol
-    a(href='https://plus.google.com/u/0/+EricFernberg',title='googleplus', target="_blank").symbol
-    a(href='http://www.linkedin.com/in/efernberg',title='linkedin', target="_blank").symbol
-    a(href='http://www.reddit.com/user/efernie/',title='reddit', target="_blank").symbol
-    a(href='https://soundcloud.com/efernie/',title='soundcloud', target="_blank").symbol
-    a(href='http://instagram.com/efernie14/',title='instagram', target="_blank").symbol
+    .linkWrap
+      a(href='https://github.com/efernie',title='github', target="_blank").symbol
+      a(href='https://twitter.com/EFernie',title='twitterbird', target="_blank").symbol
+      a(href='https://plus.google.com/u/0/+EricFernberg',title='googleplus', target="_blank").symbol
+      a(href='http://www.linkedin.com/in/efernberg',title='linkedin', target="_blank").symbol
+      a(href='http://www.reddit.com/user/efernie/',title='reddit', target="_blank").symbol
+      a(href='https://soundcloud.com/efernie/',title='soundcloud', target="_blank").symbol
+      a(href='http://instagram.com/efernie14/',title='instagram', target="_blank").symbol
 
   if locals.env == 'development'
     script(src='/build/js/app.js')

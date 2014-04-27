@@ -911,10 +911,66 @@ html, body {
   background: black;
   color: white;
   height: 100%;
+  position: relative;
+  overflow: hidden;
   width: 100%; }
 
+::-webkit-scrollbar {
+  width: 12px;
+  /* for vertical scrollbars */
+  height: 12px;
+  /* for horizontal scrollbars */ }
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 198, 224, 0.1); }
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 198, 224, 0.5); }
+
 h1 {
-  font-weight: 100; }
+  font-weight: 100;
+  -webkit-animation-duration: 3s;
+  -webkit-animation-name: slidein;
+  -webkit-animation-delay: 0.5s;
+  -moz-animation-duration: 3s;
+  -moz-animation-name: slidein;
+  -moz-animation-delay: 0.5s;
+  animation-duration: 3s;
+  animation-name: slidein;
+  animation-delay: 0.5s; }
+
+@-webkit-keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%; }
+
+  to {
+    margin-left: 1%;
+    width: 100%; } }
+
+@-moz-keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%; }
+
+  to {
+    margin-left: 1%;
+    width: 100%; } }
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%; }
+
+  to {
+    margin-left: 1%;
+    width: 100%; } }
+
+.linkWrap {
+  height: 70%;
+  overflow: auto;
+  padding-bottom: 10px;
+  width: 100%; }
 
 a {
   color: white;
@@ -922,4 +978,11 @@ a {
   font-size: 4em;
   font-size: 4vw;
   text-decoration: none;
+  transition: font-size 0.5s ease, color 0.5s ease;
   width: 100%; }
+  a:hover {
+    color: #0081d1;
+    font-size: 5em;
+    font-size: 5vw; }
+    a:hover:nth-child(4) {
+      color: #007a64; }

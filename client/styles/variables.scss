@@ -1,4 +1,5 @@
 // Fern's World Vars
+// shift + crtl + atl + u
 
 // standard colors
 $white: hsl(0, 0%, 100%);
@@ -7,10 +8,21 @@ $black: hsl(0, 0%, 0%);
 $blackAlpha: hsla(0, 0%, 0%, 0);
 $dimgrey: hsl(0, 0%, 41%);
 
+$blue: hsla(203, 100%, 41%, 1);
+$dkGreen: hsla(169, 100%, 24%, 1);
+$ltGreen: hsla(169, 97%, 34%, 1);
+$ltBlue: hsla(187, 100%, 44%, 1);
+$ltBlueA1: hsla(187, 100%, 44%, 0.1);
+$ltBlueA5: hsla(187, 100%, 44%, 0.5);
+
 
 // Fonts
 $fontSize: 4em;
 $fontSizeR: 4.0vw;
+
+$fontSizeTransition: 5em;
+$fontSizeRTransition: 5.0vw;
+
 $fontWeight: 100;
 // Symbol Size
 $symbolSize: 4em; // was 130%
