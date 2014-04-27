@@ -19,7 +19,6 @@ var browserifyTaskProd = 'browserify client/js/app.js > client/build/js/app.js -
 // Development ///////////////////////////////////////////////////////////
 gulp.task('scripts', function() {
   return gulp.src('client/js/app.js', { read: false })
-    // .pipe(exec('mkdir client/build/dev/js'))
     .pipe(exec(browserifyTaskDev))
     .pipe(refresh(server))
 });
@@ -34,22 +33,6 @@ gulp.task('size-dev-script', ['scripts'], function () {
       gzip: true,
       showFiles: true
     }))
-});
-
-gulp.task('jshintscripts', function () {
-  return gulp.src('client/js/**/*.js')
-    .pipe(jshint())
-    .pipe(jshint.reporter(stylish));
-});
-
-gulp.task('enforcejsstyleclient', function () {
-  return gulp.src('client/js/**/*.js')
-    .pipe(jscs());
-});
-
-gulp.task('enforcejsstyleserver', function () {
-  return gulp.src('server/**/*.js')
-    .pipe(jscs());
 });
 
 gulp.task('sass', function () {
@@ -97,23 +80,6 @@ gulp.task('open', function () {
   .pipe(open('', options));
 });
 
-gulp.task('test', function () {
-  return gulp.src('test.js', { read: false })
-    .pipe(cover.instrument({
-        pattern: ['server/**','client/**'],
-        debugDirectory: 'debug'
-    }))
-    .pipe(mocha({
-      reporter: 'spec',
-      ignoreLeaks: false,
-      timeout: 3000
-    }))
-    .pipe(cover.report({
-      outFile: 'coverage.html'
-    }))
-    .on('error', gutil.log);
-});
-
 gulp.task('default', ['scripts','sass','open'], function () {
 
   server.listen(35729, function ( err ) {
@@ -127,22 +93,23 @@ gulp.task('default', ['scripts','sass','open'], function () {
 
 // Production ///////////////////////////////////////////////////////////
 gulp.task('prod-sass', ['prod-clean-styles'], function () {
-  return gulp.src('client/styles/sass/main.scss')
+  return gulp.src('client/styles/main.scss')
+    .pipe(rename({suffix: '.min'}))
     .pipe(sass({
       includePaths: [
-        'client/styles/sass',
-        'client/styles/sass/libs',
+        'client/styles',
+        'client/styles/libs',
         'client/img',
         'client/styles/fonts'
       ],
       errLogToConsole: true,
       outputStyle: 'compressed'
     }))
-    .pipe(gulp.dest('client/build/dist/styles/css'))
+    .pipe(gulp.dest('client/build/css'))
 });
 
 gulp.task('size-prod-sass', ['prod-sass'], function () {
-  return gulp.src('client/build/dist/styles/css/main.css')
+  return gulp.src('client/build/css/main.min.css')
     .pipe(size({
       gzip: false,
       showFiles: true
@@ -153,46 +120,17 @@ gulp.task('size-prod-sass', ['prod-sass'], function () {
     }))
 });
 
-// doesn't really work
-gulp.task('templates', ['prod-clean-views'], function () {
-  return gulp.src('client/views/**/*.jade')
-    .pipe(jade())
-    .pipe(gulp.dest('client/build/views'))
-});
-
-gulp.task('prod-clean-scripts', function ( cb ) {
-  return gulp.src('client/build/dist/js')
+gulp.task('prod-clean-scripts', function () {
+  return gulp.src('client/build/js/*')
    .pipe(clean());
 });
 
-gulp.task('prod-clean-styles', function ( cb ) {
-  return gulp.src('client/build/dist/styles')
+gulp.task('prod-clean-styles', function () {
+  return gulp.src('client/build/css/main.min.css')
    .pipe(clean());
 });
 
-gulp.task('prod-clean-views', function ( cb ) {
-  return gulp.src('client/build/views')
-   .pipe(clean());
-});
-
-gulp.task('test-build', function () {
-  return gulp.src('test.js', { read: false })
-    .pipe(cover.instrument({
-        pattern: ['server/**','client/**'],
-        debugDirectory: 'debug'
-    }))
-    .pipe(mocha({
-      reporter: 'Nyan',
-      ignoreLeaks: false,
-      timeout: 3000
-    }))
-    .pipe(cover.report({
-      outFile: 'coverage-prod.html'
-    }))
-    .on('error', gutil.log);
-});
-
-gulp.task('size-prod-script', ['prod-build'], function () {
+gulp.task('size-prod-script', ['prod-build','min'], function () {
   return gulp.src('client/build/js/app.min.js')
     .pipe(size({
       gzip: false,
@@ -204,18 +142,25 @@ gulp.task('size-prod-script', ['prod-build'], function () {
     }));
 });
 
-gulp.task('prod-build', ['test-build','prod-clean-scripts'] , function () {
-  return gulp.src('client/js/src/app.js', { read: false })
-    // .pipe(exec('mkdir client/build/js'))
+gulp.task('prod-build', ['prod-clean-scripts'] , function () {
+  return gulp.src('client/js/app.js', { read: false })
     .pipe(exec(browserifyTaskProd))
-    .pipe(gulp.src('client/build/js/app.js'))
+    ;
+    // .pipe(gulp.src('client/build/js/app.js'))
+    // .pipe(rename({suffix: '.min'}))
+    // .pipe(uglify())
+    // .pipe(gulp.dest('client/build/js'));
+});
+
+gulp.task('min', function () {
+  return gulp.src('client/build/js/app.js')
     .pipe(rename({suffix: '.min'}))
     .pipe(uglify())
-    .pipe(gulp.dest('client/build/dist/js'));
+    .pipe(gulp.dest('client/build/js'));
 });
 
 gulp.task('build', ['size-prod-script', 'size-prod-sass'], function () {
-  notify({ message: 'Build task complete'});
+  return notify({ message: 'Build task complete'});
 });
 
 gulp.task('buildbrowser', ['size-prod-script'], function () {

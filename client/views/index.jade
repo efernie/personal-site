@@ -22,4 +22,7 @@ html
   body
     h1 Hello World
 
+  if locals.env == 'development'
     script(src='/build/js/app.js')
+  else
+    script(src='/build/js/app.min.js')
