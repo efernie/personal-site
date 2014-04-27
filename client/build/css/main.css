@@ -909,7 +909,9 @@ a.symbol:before {
 
 html, body {
   background: black;
-  color: white; }
+  color: white;
+  height: 100%;
+  width: 100%; }
 
 h1 {
   font-weight: 100; }
@@ -918,5 +920,6 @@ a {
   color: white;
   display: block;
   font-size: 4em;
-  font-size: 5.4vw;
-  text-decoration: none; }
+  font-size: 4vw;
+  text-decoration: none;
+  width: 100%; }

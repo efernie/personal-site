@@ -5,6 +5,8 @@
 html, body {
   background: $black;
   color: $white;
+  height: 100%;
+  width: 100%;
 }
 
 h1 {
@@ -17,4 +19,5 @@ a {
   font-size: $fontSize;
   font-size: $fontSizeR;
   text-decoration: none;
+  width: 100%;
 }
