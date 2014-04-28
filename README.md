@@ -6,6 +6,8 @@ My personal site built using the koa framework as an experiment.
   - ##### Server
     - [koa](https://github.com/koajs/koa)
     - [jade](https://github.com/visionmedia/jade)
+    - [leveldb](https://github.com/rvagg/node-levelup) <-- must use node v0.11.10 (anything higher doesn't work at the moment)
+    - [q](https://github.com/kriskowal/q)
 
   - ##### Client
     - [browserify](https://github.com/substack/node-browserify)
@@ -14,11 +16,11 @@ My personal site built using the koa framework as an experiment.
 ----
 ##### Running in Development
 
-I am using [nvm](https://github.com/creationix/nvm) to run node v0.11.12 and I am using [nodemon](https://github.com/remy/nodemon) for development to restart everytime I make a change. It runs on port 3000 by default.
+I am using [nvm](https://github.com/creationix/nvm) to run node v0.11.10 and I am using [nodemon](https://github.com/remy/nodemon) for development to restart everytime I make a change. It runs on port 3000 by default.
 
 ```bash
-$ nvm use 0.11.12
-$ sudo nodemon --harmony index.js
+$ nvm use 0.11.10
+$ sudo npm run-script startnodemon
 ```
 
 ##### Running Foerver

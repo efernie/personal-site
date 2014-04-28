@@ -10,7 +10,8 @@
     "koa-router": "^3.1.2",
     "koa-common": "^1.2.0",
     "levelup": "^0.18.3",
-    "leveldown": "^0.10.2"
+    "leveldown": "^0.10.2",
+    "q": "^1.0.1"
   },
   "devDependencies": {
     "gulp-rename": "^1.2.0",
@@ -32,5 +33,9 @@
     "gulp-sass": "^0.7.1",
     "gulp-notify": "^1.2.5",
     "gulp-exec": "^2.0.0"
+  },
+  "scripts": {
+    "start": "node --harmony server/index.js",
+    "startnodemon": "nodemon --harmony server/index.js"
   }
 }

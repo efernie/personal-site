@@ -4,14 +4,17 @@ var koa = require('koa'),
     responseTime = common.responseTime,
     serve = common.static,
     compress = common.compress,
+    etag = common.etag,
     path = require('path'),
     router = require('koa-router'),
+    db = require('./db'),
     app = koa(),
     config = require('./config')[app.env],
     render = views(path.resolve(__dirname,  '../', 'client/views'), { ext: 'jade' });
 
 // app.use(responseTime());
 app.use( compress() );
+app.use(etag());
 app.use( serve( path.resolve(__dirname,  '../', 'client/') ) );
 
 // app.use( function *( next ) {
@@ -22,6 +25,8 @@ app.use( serve( path.resolve(__dirname,  '../', 'client/') ) );
 // });
 
 app.use( router(app) );
+
+console.log(db);
 
 app.get('/', function *(next) {
   this.locals = {
